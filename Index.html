@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Diwash Bill Splitter</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #141e30, #243b55);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 400px;
+            background: rgba(255, 255, 255, 0.97);
+            padding: 30px;
+            border-radius: 22px;
+            box-shadow: 0 15px 40px rgba(0,0,0,0.35);
+            text-align: center;
+        }
+
+        /* DIWASH BRAND */
+        .brand {
+            font-size: 15px;
+            font-weight: bold;
+            letter-spacing: 5px;
+            margin-bottom: 8px;
+            color: #243b55;
+        }
+
+        h1 {
+            margin: 5px 0 25px;
+            font-size: 30px;
+        }
+
+        label {
+            display: block;
+            text-align: left;
+            margin-top: 15px;
+            margin-bottom: 7px;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 14px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        input:focus {
+            border-color: #243b55;
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: none;
+            border-radius: 10px;
+            background: #243b55;
+            color: white;
+            font-size: 17px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:active {
+            transform: scale(0.98);
+        }
+
+        #result {
+            margin-top: 20px;
+            padding: 15px;
+            background: #f1f3f5;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        /* ANIMATED DESIGNER CREDIT */
+        .designer {
+            margin-top: 25px;
+            font-size: 13px;
+            color: #777;
+            animation: fadeSlide 2s ease-in-out infinite alternate;
+        }
+
+        .designer span {
+            font-weight: bold;
+            color: #243b55;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0.45;
+                transform: translateY(3px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(-3px);
+            }
+        }
+
+        /* Small signature */
+        .signature {
+            margin-top: 8px;
+            font-size: 20px;
+            font-style: italic;
+            font-weight: bold;
+            color: #243b55;
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                opacity: 0.6;
+                transform: scale(1);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1.04);
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <div class="brand">DIWASH</div>
+
+        <h1>💰 Bill Splitter</h1>
+
+        <label>Total Price</label>
+        <input
+            type="number"
+            id="price"
+            placeholder="Enter total price"
+        >
+
+        <label>Number of Persons</label>
+        <input
+            type="number"
+            id="persons"
+            placeholder="Enter number of persons"
+        >
+
+        <button onclick="calculate()">
+            Calculate
+        </button>
+
+        <div id="result">
+            Enter details above
+        </div>
+
+        <div class="designer">
+            Software Designed by
+            <span>Diwash Chapagain</span>
+        </div>
+
+        <div class="signature">
+            — Diwash —
+        </div>
+
+    </div>
+
+    <script>
+        function calculate() {
+
+            let price =
+                parseFloat(document.getElementById("price").value);
+
+            let persons =
+                parseInt(document.getElementById("persons").value);
+
+            if (!price || !persons || persons <= 0) {
+
+                document.getElementById("result").innerHTML =
+                    "⚠️ Please enter valid numbers";
+
+                return;
+            }
+
+            let individualPrice = price / persons;
+
+            document.getElementById("result").innerHTML =
+                "Each person pays: " +
+                individualPrice.toFixed(2);
+        }
+    </script>
+
+</body>
+</html>
